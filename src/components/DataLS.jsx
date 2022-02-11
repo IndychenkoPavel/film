@@ -1,6 +1,7 @@
 // import {generate as id} from 'shortid';
 import React from 'react';
 import { useState, useEffect } from "react";
+import ButtonComponent from "./ButtonComponent";
 
 
 const dataFilms = [
@@ -73,11 +74,7 @@ const DataLS = () => {
 
   useEffect(() => {
     setMovies(dataLS)
-  }, []);
-
-  // const getMovies = (dataLS) => {
-  //   setMovies(dataLS)
-  // } 
+  }, [dataLS]);
   
 
   return (
@@ -85,7 +82,7 @@ const DataLS = () => {
         {movies.length > 0 && movies.map((movie) => 
           <div className='film-container' key={movie._id}>
             <div className='film-img'>
-              <img src='../../img/seeker.jpg' alt="1" />
+              <img src={movie.img} alt="1" />
             </div>
             <div className="film-bottom">
               <h3 className="film-title">
@@ -98,31 +95,18 @@ const DataLS = () => {
               {movie.duration} min
               </p>
             </div>
+            <div className="film-price">
+            {movie.price} $
+            </div>
+            <ButtonComponent />
           </div>
+
         )}
     </div>
   )
 }
 
-// _id: 1,
-//     title: "Legend of the Seeker",
-//     director: "Stephen Tolkin",
-//     duration: 93,
-//     price: 48.3,
-//     img: "/img/seeker.jpg",
-//     featured: false,
-//     description:
-
-
 
 export default DataLS
 
-// useEffect(() => {
-//   if (filmsLS == null) {
-//     localStorage.setItem('LSdata', JSON.stringify(dataFilms));
-//   }
-// }, []);
-
-// return filmsLS
-// }
 
