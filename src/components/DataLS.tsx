@@ -62,7 +62,7 @@ const dataFilms = [
   },
 ];
 
-interface TypeArr {
+export interface TypeArr {
   title?: string
   _id: number
   director: string
@@ -74,14 +74,13 @@ interface TypeArr {
 };
 
 
-const DataLS = () => {
+const DataLS: React.FC = () => {
 
   localStorage.setItem('LSdata', JSON.stringify(dataFilms));
-
-  JSON.parse(localStorage.getItem('LSdata'));
+  
   const dataLS = JSON.parse(localStorage.getItem('LSdata'));
-
-  const [ movies, setMovies ] = useState([]);
+  
+  const [ movies, setMovies ] = useState<TypeArr[]>([]);
 
   useEffect(() => {
     setMovies(dataLS)

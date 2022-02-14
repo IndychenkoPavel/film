@@ -60,7 +60,7 @@ h1 {
   padding: 10px;
 }
 
-.btn-edit, .btn-delete {
+.btn-delete, .btn-edit {
   width: 80px;
   height: 30px;
   border-radius: 5px;
@@ -72,6 +72,10 @@ h1 {
   text-transform: uppercase;
   transition: all 0.2s linear;
 }
+.btn-edit {
+  text-decoration: none;
+  text-align: center;
+}
 
 .btn-delete:hover, .btn-edit:hover  {
   color: #fff;
@@ -80,6 +84,7 @@ h1 {
 
 
 .btn-link {
+  width: 100%;
   display: flex;
   justify-content: space-around;
   margin: auto;
@@ -87,9 +92,13 @@ h1 {
   background-color: rgb(228, 227, 227);
 
 }
-.btn-link button {
+.btn-link a {
+  text-decoration: none;
+  color: #000;
+  justify-content: center;
+  align-items: center;
   width: 100px;
-  display: block;
+  display: flex;
   height: 40px;
   border-radius: 10px;
   font-size: 18px;
@@ -99,7 +108,7 @@ h1 {
   background-color: rgba(91, 173, 91, 0.646);
 
 }
-.btn-link button:hover {
+.btn-link a:hover {
   background-color: rgba(91, 173, 91, 0.856);
   border: 2px solid;
 }

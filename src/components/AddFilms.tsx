@@ -1,6 +1,6 @@
 import React from 'react'
 
-const AddFilm = () => {
+const AddFilms = () => {
   return (
     <div>
         <form action="">
@@ -16,4 +16,4 @@ const AddFilm = () => {
   )
 }
 
-export default AddFilm
+export default AddFilms
