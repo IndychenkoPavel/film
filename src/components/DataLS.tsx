@@ -78,11 +78,15 @@ const DataLS: React.FC = () => {
 
   localStorage.setItem('LSdata', JSON.stringify(dataFilms));
   
-  const dataLS = JSON.parse(localStorage.getItem('LSdata'));
+  let dataLS = JSON.parse(localStorage.getItem('LSdata'));
+  // if(dataLS != null){
+  //   dataLS = JSON.parse(dataLS);
+  // }
   
   const [ movies, setMovies ] = useState<TypeArr[]>([]);
 
   useEffect(() => {
+    
     setMovies(dataLS)
   }, [dataLS]);
   
