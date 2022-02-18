@@ -1,8 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 
-const AddFilms = () => {
-  // const mass = ['director', 'title', 'price', 'img', 'duration', 'description',];
+const AddFilms = ({setMovies}:any) => {
 
 const [ title, setTitle ] = useState('');
 const [ director, setDirector ] = useState('');
@@ -11,19 +10,22 @@ const [ img, setImg ] = useState('');
 const [ duration, setDuration ] = useState('');
 const [ description, setDescription ] = useState('');
 
-// useEffect(() => {
-    
-//   setTitle()
-// }, []);
-
-
 const onSubmit = (e) => {
   e.preventDefault();
-  console.log(title);
-  console.log(director);
-  console.log(price);
-}
+  const newObj = {
+    title: title,
+    director: director,
+    price: price,
+    img: img,
+    duration: duration,
+    description: description
+  }
 
+  console.log(newObj);
+  setMovies(prevMovies => {
+    return [...prevMovies, newObj]  // добавить обьект в массив
+  })
+}
 
   return (
     <div>
