@@ -1,12 +1,21 @@
 // import {generate as id} from 'shortid';
 import React from 'react';
 import TypeArr  from './TypeArr';
-// import { useState, useEffect } from "react";
-import ButtonComponent from "./ButtonComponent";
-// import dataFilms from "../App";
+// import ButtonComponent from "./ButtonComponent";
+import { Link } from 'react-router-dom';
+// import { useState} from 'react'
+import { useParams } from 'react-router-dom'
 
 
-const DataLS = ({movies}: {movies: TypeArr[]}) => {
+const DataLS = ({movies}: {movies: TypeArr[]}, {setMovies}:any) => {
+
+  const {id} = useParams();
+  // const [ title, setTitle ] = useState(movie.title);  
+
+  const deletFilms = (e) => {
+    console.log(encodeURI)
+    setMovies(movies.filter(item => item._id !== id));  
+  }
 
   return (
     <div className='films-all'>
@@ -29,7 +38,11 @@ const DataLS = ({movies}: {movies: TypeArr[]}) => {
             <div className="film-price">
             {movie.price} $
             </div>
-            <ButtonComponent id={movie._id}/>
+            {/* <ButtonComponent id={movie._id}/> */}
+            <div className='button-block'>
+              <Link to={`/editFilm/${movie._id}`} className='btn-edit'>edit</Link>
+              <button className='btn-delete' id={`${movie._id}`} onClick={deletFilms} >delete</button>
+            </div>
             
           </div>  
         )}

@@ -6,30 +6,32 @@ const EditFilm = ({setMovies, movies}:any) => {
 
   const {id} = useParams();
 
-// console.log(movies[id]);
-  const [ title, setTitle ] = useState(movies[id].title);
-  const [ director, setDirector ] = useState(movies[id].director);
-  const [ price, setPrice ] = useState(movies[id].price);
-  const [ img, setImg ] = useState(movies[id].img);
-  const [ duration, setDuration ] = useState(movies[id].duration);
-  const [ description, setDescription ] = useState(movies[id].description);
+  const movie = movies.find((e) => e._id === Number(id));
+  const [ title, setTitle ] = useState(movie.title);
+  const [ director, setDirector ] = useState(movie.director);
+  const [ price, setPrice ] = useState(movie.price);
+  const [ img, setImg ] = useState(movie.img);
+  const [ duration, setDuration ] = useState(movie.duration);
+  const [ description, setDescription ] = useState(movie.description);
   
   const onSubmit = (e) => {
     e.preventDefault();
-    const newObj = {
-      title: title,
-      director: director,
-      price: price,
-      img: img,
-      duration: duration,
-      description: description
-    }
+    setMovies((prevMovies: any) => {
+      prevMovies.forEach((movie: any) => {
+        if (movie._id === Number(id)) {
+          movie.title = title;
+          movie.director = director;
+          movie.price = price;
+          movie.img = img;
+          movie.duration = duration;
+          movie.description = description
+        }
+      });
+      localStorage.setItem("LSdata", JSON.stringify(prevMovies));
+      return [...prevMovies];
+    });
+  };
   
-    console.log(newObj);
-    setMovies(prevMovies => {
-      return [...prevMovies, newObj]  // добавить обьект в массив
-    })
-  }
 
   return (
     <div>

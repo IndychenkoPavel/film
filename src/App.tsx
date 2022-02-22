@@ -74,7 +74,9 @@ function App() {
     localStorage.setItem('LSdata', JSON.stringify(dataFilms));
   
     let dataLS = JSON.parse(localStorage.getItem('LSdata'));
-    
+    if (dataLS === null) {
+      localStorage.setItem("LSdata", JSON.stringify(dataFilms));
+    }
     setMovies(dataLS)
   }, []);
 
@@ -88,7 +90,7 @@ function App() {
         <Link to='/singIn' className='sing-in'>Sing in</Link>
     </div>
     <Routes>
-      <Route path="/home" element={<DataLS movies={movies}/>}  />
+      <Route path="/home" element={<DataLS movies={movies} setMovies={setMovies}/>}  />
       <Route path="/addFilm" element={<AddFilms setMovies={setMovies} />} />
       <Route path="/editFilm/:id" element={<EditFilm setMovies={setMovies} movies={movies}/>} />
       <Route path="/singIn" element={<SingIn />} />

@@ -32,13 +32,13 @@ h1 {
 .films-all {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
 }
 
 .film-container {
   border: 2px solid;
   margin-bottom: 40px;
   position: relative;
+  margin-right: 40px;
 }
 
 .film-price {

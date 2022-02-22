@@ -13,6 +13,7 @@ const [ description, setDescription ] = useState('');
 const onSubmit = (e) => {
   e.preventDefault();
   const newObj = {
+    _id: Date.now(),
     title: title,
     director: director,
     price: price,
